@@ -1,0 +1,32 @@
+{
+  "name": "cronapt",
+  "description": "Installs/Configures cronapt",
+  "long_description": "cron-apt cookbook\n------------------\n\n[![Build Status](https://secure.travis-ci.org/gregpalmier/cronapt-cookbook.png)](http://travis-ci.org/gregpalmier/cronapt-cookbook)\n\nThis cookbook provides a basic cron-apt management.\n\nRequirements\n------------\n* [vagrant](http://downloads.vagrantup.com/) >= 1.2.0\n* [berkshelf](http://berkshelf.com/) >= 2.0.0\n* [vagrant-berkshelf plugin](https://github.com/RiotGames/vagrant-berkshelf) >= 1.3.3\n\nUsage\n-----\n\nIn your Vagrantfile, customize these attributes:\n\n````\n    chef.json = {\n        :cronapt => {\n          :mailto => 'you@example.com',\n          :enable_upgrade => true,\n          :fivemin => true\n      }\n    }\n````\n\nAttributes\n----------\n\n````\ndefault['cronapt']['mailto']           = 'you@example.com'\ndefault['cronapt']['mailon']           = 'always'\ndefault['cronapt']['enable_upgrade']   = false\ndefault['cronapt']['nightly']          = false\ndefault['cronapt']['hourly']           = false\ndefault['cronapt']['fivemin']          = false\ndefault['cronapt']['force_confmiss']   = false\ndefault['cronapt']['force_confnew']    = false\ndefault['cronapt']['force_confdef']    = false\ndefault['cronapt']['force_confold']    = false\ndefault['cronapt']['keepupdated']      = %w(bash)\n````\n\nRecipes\n-------\n\nNo additional recipes yet.\n\nContributing\n------------\n\n1. Fork the repository on Github\n2. Create a named feature branch (like `add_component_x`)\n3. Write your change\n4. Write tests for your change (if applicable)\n5. Run the tests, ensuring they all pass\n6. Submit a Pull Request using Github\n\nLicense and Authors\n-------------------\nLicense: None.  Do as you wish.\nAuthors: gregpalmier\n",
+  "maintainer": "Greg Palmier",
+  "maintainer_email": "gregpalmier@gmail.com",
+  "license": "All rights reserved",
+  "platforms": {
+  },
+  "dependencies": {
+    "apt": ">= 0.0.0",
+    "cron": ">= 0.0.0",
+    "postfix": ">= 0.0.0"
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+  },
+  "version": "0.3.4"
+}
