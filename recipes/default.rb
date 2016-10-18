@@ -28,7 +28,9 @@ template '/etc/cron.d/cron-apt' do
   variables(
     nightly: node['cronapt']['nightly'],
     hourly: node['cronapt']['hourly'],
-    fivemin: node['cronapt']['fivemin']
+    fivemin: node['cronapt']['fivemin'],
+    qa: node['cronapt']['qa'],
+    production: node['cronapt']['production']
   )
 end
 

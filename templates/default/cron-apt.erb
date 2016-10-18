@@ -7,3 +7,7 @@
 <%= '0 * * * *	root	test -x /usr/sbin/cron-apt && /usr/sbin/cron-apt' if @hourly %>
 # Every five minutes.
 <%= '*/5 * * * *	root	test -x /usr/sbin/cron-apt && /usr/sbin/cron-apt' if @fivemin %>
+# Every Monday morning
+<%= '0 10 * * 1	root	test -x /usr/sbin/cron-apt && /usr/sbin/cron-apt' if @qa %>
+# Every Sunday morning
+<%= '0 10 * * 0	root	test -x /usr/sbin/cron-apt && /usr/sbin/cron-apt' if @production %>
