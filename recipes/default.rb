@@ -20,15 +20,34 @@ package 'cron-apt' do
   action :upgrade
 end
 
+if node['cronapt']['environment']
+  cronapt_env = node['cronapt']['environment']
+else
+  cronapt_env = node.chef_environment
+end
+
+qa = beta = production = false
+
+case cronapt_env
+when 'qa'
+  qa = true
+when 'beta'
+  beta = true
+when 'production'
+  production = true
+else
+  fail "'#{cronapt_env}' is an invalid environment for cron-apt. Please use 'qa', 'beta', or 'production'."
+end
+
 template '/etc/cron.d/cron-apt' do
   source 'cron-apt.erb'
   owner 'root'
   group 0
   mode 00644
   variables(
-    nightly: node['cronapt']['nightly'],
-    hourly: node['cronapt']['hourly'],
-    fivemin: node['cronapt']['fivemin']
+    qa: qa,
+    beta: beta,
+    production: production
   )
 end
 
