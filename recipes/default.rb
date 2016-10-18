@@ -20,6 +20,10 @@ package 'cron-apt' do
   action :upgrade
 end
 
+package 'unattended-upgrades' do
+  action :purge
+end
+
 if node['cronapt']['environment']
   cronapt_env = node['cronapt']['environment']
 else
