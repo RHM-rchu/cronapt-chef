@@ -5,6 +5,9 @@
 
 if [[ $@ == *dist-upgrade* && $@ != *-d* ]] ; then
   /usr/bin/apt-get $@ && /usr/local/bin/apt_notify_slack "\`dist-upgrade\` was *successful*" || /usr/local/bin/apt_notify_slack "\`dist-upgrade\` was *unsuccessful*"
+  if [ -x /usr/lib/update-notifier/update-motd-reboot-required ]; then
+    /usr/local/bin/apt_notify_slack "System restart is required."
+  fi
 elif [[ $@ == *update* ]] ; then
   /usr/bin/apt-get $@ || /usr/local/bin/apt_notify_slack "\`update\` was *unsuccessful*"
 else
