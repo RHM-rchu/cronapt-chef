@@ -12,7 +12,7 @@
 # OBSERVE that this tool is indended for apt-get and tools like aptitude do not
 # have full support for noninteractive upgrades. You may have to tune options
 # to not create infinit logfiles for example.
-# APTCOMMAND=/usr/bin/apt-get
+APTCOMMAND=<%= @aptcommand %>
 # APTCOMMAND=/usr/bin/aptitude
 # APTCOMMAND=/usr/bin/apt-file
 
@@ -84,7 +84,7 @@
 # MAIL="/var/log/cron-apt/mail"
 
 # The email address to send mail to.
-MAILTO="<%= node['cronapt']['mailto'] %>"
+MAILTO="<%= @mailto %>"
 
 # When to send email about the cron-apt results.
 # Value: error   (send mail on error runs)
@@ -93,7 +93,7 @@ MAILTO="<%= node['cronapt']['mailto'] %>"
 #	 output  (send mail when output is generated)
 #        always  (always send mail)
 #                (else never send mail)
-MAILON="<%= node['cronapt']['mailon'] %>"
+MAILON="<%= @mailon %>"
 
 # Value: error   (syslog on error runs)
 #	 upgrade (when packages is upgraded)

@@ -1,5 +1,6 @@
 default['cronapt']['mailto']           = 'your@email.com'
 default['cronapt']['mailon']           = 'always'
+default['cronapt']['aptcommand']       = '/usr/local/bin/apt-get-slack'
 default['cronapt']['enable_upgrade']   = false
 default['cronapt']['force_confmiss']   = false
 default['cronapt']['force_confnew']    = false

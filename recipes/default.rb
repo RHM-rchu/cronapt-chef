@@ -83,4 +83,16 @@ template '/etc/cron-apt/config' do
   owner 'root'
   group 0
   mode 00644
+  variables(
+    mailon: node['cronapt']['mailon'],
+    mailto: node['cronapt']['mailto'],
+    aptcommand: node['cronapt']['aptcommand']
+  )
+end
+
+cookbook_file '/usr/local/bin/apt-get-slack' do
+  source 'apt-get-slack'
+  owner 'root'
+  group 'root'
+  mode '0755'
 end

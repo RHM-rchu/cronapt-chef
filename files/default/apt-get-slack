@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# Wraps apt-get so we can notify Slack
+#
+
+if [[ $@ == *dist-upgrade* && $@ != *-d* ]] ; then
+  /usr/bin/apt-get $@ && /usr/local/bin/notify_slack "\`dist-upgrade\` was *successful*" || /usr/local/bin/notify_slack "\`dist-upgrade\` was *unsuccessful*"
+elif [[ $@ == *update* ]] ; then
+  /usr/bin/apt-get $@ || /usr/local/bin/notify_slack "\`update\` was *unsuccessful*"
+else
+  /usr/bin/apt-get $@
+fi
