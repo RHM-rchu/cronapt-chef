@@ -31,13 +31,13 @@ qa = beta = production = false
 case cronapt_env
 when 'qa'
   qa = true
-  reboot_reminder_day = '0,2,3,4,5,6'
+  reboot_reminder_day = '2,3,4,5'
 when 'beta'
   beta = true
-  reboot_reminder_day = '0,2,3,4,5,6'
+  reboot_reminder_day = '2,3,4,5'
 when 'production'
   production = true
-  reboot_reminder_day = '0,1,2,3,5,6'
+  reboot_reminder_day = '1,2,3,5'
 else
   fail "'#{cronapt_env}' is an invalid environment for cron-apt. Please use 'qa', 'beta', or 'production'."
 end
@@ -103,10 +103,9 @@ cookbook_file '/usr/local/bin/reboot-reminder' do
   mode '0755'
 end
 
-cron 'reboot reminder' do
+file '/etc/cron.d/reboot-reminder' do
   user 'root'
-  minute '0'
-  hour '10'
-  day reboot_reminder_day
-  command '/usr/local/bin/reboot-reminder'
+  group 'adm'
+  mode '0640'
+  content "0 10 * * #{reboot_reminder_day} root /usr/local/bin/reboot-reminder"
 end
