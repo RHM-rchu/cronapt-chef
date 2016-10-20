@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# Sends a slack notification to reboot your system
+#
+
+if [ -x /usr/lib/update-notifier/update-motd-reboot-required ]; then
+  /usr/local/bin/apt_notify_slack "I need to be rebooted"
+fi

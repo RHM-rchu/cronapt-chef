@@ -31,10 +31,13 @@ qa = beta = production = false
 case cronapt_env
 when 'qa'
   qa = true
+  reboot_reminder_day = '0,2,3,4,5,6'
 when 'beta'
   beta = true
+  reboot_reminder_day = '0,2,3,4,5,6'
 when 'production'
   production = true
+  reboot_reminder_day = '0,1,2,3,5,6'
 else
   fail "'#{cronapt_env}' is an invalid environment for cron-apt. Please use 'qa', 'beta', or 'production'."
 end
@@ -91,4 +94,19 @@ cookbook_file '/usr/local/bin/apt-get-slack' do
   owner 'root'
   group 'root'
   mode '0755'
+end
+
+cookbook_file '/usr/local/bin/reboot-reminder' do
+  source 'reboot-reminder'
+  owner 'root'
+  group 'root'
+  mode '0755'
+end
+
+cron 'reboot reminder' do
+  user 'root'
+  minute '0'
+  hour '10'
+  day reboot_reminder_day
+  command '/usr/local/bin/reboot-reminder'
 end
