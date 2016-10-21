@@ -107,5 +107,5 @@ file '/etc/cron.d/reboot-reminder' do
   user 'root'
   group 'adm'
   mode '0640'
-  content "0 10 * * #{reboot_reminder_day} root /usr/local/bin/reboot-reminder >/dev/null 2>&1"
+  content "0 10 * * #{reboot_reminder_day} root /usr/local/bin/reboot-reminder >/dev/null 2>&1\n"
 end
