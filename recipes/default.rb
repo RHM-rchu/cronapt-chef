@@ -35,11 +35,14 @@ when 'qa'
 when 'beta'
   beta = true
   reboot_reminder_day = '2,3,4,5'
+when 'overhead'
+  overhead = true
+  reboot_reminder_day = '2,3,4,5'
 when 'production'
   production = true
   reboot_reminder_day = '1,2,3,5'
 else
-  fail "'#{cronapt_env}' is an invalid environment for cron-apt. Please use 'qa', 'beta', or 'production'."
+  fail "'#{cronapt_env}' is an invalid environment for cron-apt. Please use 'qa', 'beta', 'overhead', or 'production'."
 end
 
 template '/etc/cron.d/cron-apt' do

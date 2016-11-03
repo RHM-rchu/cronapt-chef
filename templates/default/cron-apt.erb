@@ -1,8 +1,9 @@
 # This file is controlled by Chef.  Changes will be overwritten.
 # Regular cron jobs for the cron-apt package
 #
-# QA and Beta run Monday morning
+# QA, Beta, and Overhead run Monday morning
 # Production runs Thursday morning
 <%= '0 10 * * 1	root	test -x /usr/sbin/cron-apt && /usr/sbin/cron-apt' if @qa %>
 <%= '0 10 * * 1	root	test -x /usr/sbin/cron-apt && /usr/sbin/cron-apt' if @beta %>
+<%= '0 10 * * 1	root	test -x /usr/sbin/cron-apt && /usr/sbin/cron-apt' if @overhead %>
 <%= '0 10 * * 4	root	test -x /usr/sbin/cron-apt && /usr/sbin/cron-apt' if @production %>
