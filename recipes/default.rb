@@ -53,6 +53,7 @@ template '/etc/cron.d/cron-apt' do
   variables(
     qa: qa,
     beta: beta,
+    overhead: overhead,
     production: production
   )
 end
