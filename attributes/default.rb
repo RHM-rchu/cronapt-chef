@@ -8,3 +8,4 @@ default['cronapt']['force_confdef']    = false
 default['cronapt']['force_confold']    = false
 default['cronapt']['keepupdated']      = %w(bash openssl)
 default['cronapt']['environment']      = false
+default['cronapt']['enable_reboot']    = false

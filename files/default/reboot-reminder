@@ -1,9 +1,22 @@
 #!/bin/bash
 #
 # Sends a slack notification to reboot your system
+# and optionally reboots your system if you tell it to
 #
 
 
-if [ -f /var/run/reboot-required ]; then
-  /usr/local/bin/apt_notify_slack "I need to be rebooted"
+REBOOT=$1
+
+if [ -z "$REBOOT" ]; then
+  REBOOT="no"
 fi
+
+if [ -f /var/run/reboot-required ]; then
+  if [ "$REBOOT" == "yes" ]; then
+    /usr/local/bin/apt_notify_slack "Automatically being rebooted"
+    /sbin/reboot
+  else
+    /usr/local/bin/apt_notify_slack "I need to be rebooted"
+  fi
+fi
+

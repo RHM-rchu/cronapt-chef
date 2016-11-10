@@ -107,9 +107,15 @@ cookbook_file '/usr/local/bin/reboot-reminder' do
   mode '0755'
 end
 
+if node['cronapt']['enable_reboot']
+  do_reboot = 'yes'
+else
+  do_reboot = 'no'
+end
+
 file '/etc/cron.d/reboot-reminder' do
   user 'root'
   group 'adm'
   mode '0640'
-  content "0 10 * * #{reboot_reminder_day} root /usr/local/bin/reboot-reminder >/dev/null 2>&1\n"
+  content "0 10 * * #{reboot_reminder_day} root /usr/local/bin/reboot-reminder #{do_reboot} >/dev/null 2>&1\n"
 end
