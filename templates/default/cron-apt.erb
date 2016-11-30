@@ -3,7 +3,7 @@
 #
 # QA, Beta, and Overhead run Monday morning
 # Production runs Thursday morning
-<%= '0 10 * * 1	root	test -x /usr/sbin/cron-apt && /usr/sbin/cron-apt && /usr/local/bin/reboot-reminder yes' if @qa %>
-<%= '0 10 * * 1	root	test -x /usr/sbin/cron-apt && /usr/sbin/cron-apt && /usr/local/bin/reboot-reminder yes' if @beta %>
-<%= '0 10 * * 1	root	test -x /usr/sbin/cron-apt && /usr/sbin/cron-apt && /usr/local/bin/reboot-reminder yes' if @overhead %>
-<%= '0 10 * * 4	root	test -x /usr/sbin/cron-apt && /usr/sbin/cron-apt && /usr/local/bin/reboot-reminder no' if @production %>
+<%= '0 10 * * 1	root	test -x /usr/sbin/cron-apt && /usr/sbin/cron-apt && /usr/sbin/aideinit -c /etc/aide/aide.conf -f -y && /usr/local/bin/reboot-reminder yes' if @qa %>
+<%= '0 10 * * 1	root	test -x /usr/sbin/cron-apt && /usr/sbin/cron-apt && /usr/sbin/aideinit -c /etc/aide/aide.conf -f -y && /usr/local/bin/reboot-reminder yes' if @beta %>
+<%= '0 10 * * 1	root	test -x /usr/sbin/cron-apt && /usr/sbin/cron-apt && /usr/sbin/aideinit -c /etc/aide/aide.conf -f -y && /usr/local/bin/reboot-reminder yes' if @overhead %>
+<%= '0 10 * * 4	root	test -x /usr/sbin/cron-apt && /usr/sbin/cron-apt && /usr/sbin/aideinit -c /etc/aide/aide.conf -f -y && /usr/local/bin/reboot-reminder no' if @production %>
