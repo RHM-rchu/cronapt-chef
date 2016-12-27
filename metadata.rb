@@ -6,7 +6,7 @@ maintainer_email 'gregpalmier@gmail.com'
 license 'All rights reserved'
 description 'Installs/Configures cronapt'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version '0.3.8'
+version '0.3.9'
 depends 'apt'
 depends 'cron'
 depends 'postfix'
